@@ -93,9 +93,9 @@ This file controls the bot’s behavior. Below is an example configuration:
 - Wallets generator: [Link](https://github.com/MeoMunDep/Automatic-Ultimate-Create-Wallets-for-Airdrop)
 
 ```txt
-EVM privatekey
-EVM privatekey
-EVM privatekey
+EVM address
+EVM address
+EVM address
 ```
 
 _Note: Each row for each account_
