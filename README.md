@@ -154,7 +154,7 @@ _Note: each row for each account_
 
 ## Contact and Support
 
-- **Help me with your referral** [Extension download link](https://chromewebstore.google.com/detail/naoris-protocol-browser-s/cpikalnagknmlfhnilhfelifgbollmmp)
+- **Help me with your referral** [Extension download link](https://chromewebstore.google.com/detail/naoris-protocol-browser-s/cpikalnagknmlfhnilhfelifgbollmmp) - Referral Code: `https://t.me/boost/KeoAirDropFreeNee`
 - **Buy me a telegram account** [Here](https://t.me/KeoAirDropFreeNe/312/27801) or [Here](https://github.com/MeoMunDep/MeoMunDep)
 
 If you encounter any issues or have questions, feel free to reach out:
