@@ -113,7 +113,7 @@ while true; do
             else
                 print_green "Using node_modules from current directory"
             fi
-            node referrals_and_generate_devicehash_meomundep; node ping_meomundep
+            node referrals_and_generate_devicehash_meomundep.js
             read -p "Press Enter to continue..."
             ;;
         4)
