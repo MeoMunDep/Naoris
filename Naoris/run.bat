@@ -95,7 +95,7 @@ if exist "..\node_modules" (
 ) else (
     echo Using node_modules from current directory
 )
-node referrals_and_generate_devicehash_meomundep; node ping_meomundep
+node referrals_and_generate_devicehash_meomundep.js
 pause
 goto MENU
 
