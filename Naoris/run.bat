@@ -11,47 +11,25 @@ if exist node_modules (
     echo node_modules not found in parent directory
 )
 
-:MENU
-cls
-echo =================================================================
-echo    Naoris BOT SETUP AND RUN SCRIPT by @MeoMunDep
-echo =================================================================
-echo.
-echo Current directory: %CD%
-echo Parent node_modules: %~dp0..\node_modules
-echo.
-echo 1. Install/Update Node.js Dependencies
-echo 2. Create/Edit Configuration Files
-echo 3. Run the Bot
-echo 4. Exit
-echo.
-set /p choice="Enter your choice (1-4): "
 
-if "%choice%"=="1" goto INSTALL
-if "%choice%"=="2" goto CONFIG
-if "%choice%"=="3" goto RUN
-if "%choice%"=="4" goto EXIT
-
-:INSTALL
 cls
 echo Checking node_modules location...
 if exist "..\node_modules" (
     cd ..
     echo Installing/Updating dependencies in parent directory...
-    npm install user-agents axios colors p-limit https-proxy-agent socks-proxy-agent crypto-js canvas gl
+    CALL npm install user-agents axios colors p-limit https-proxy-agent socks-proxy-agent crypto-js canvas gl
     cd %~dp0
 ) else (
     echo Installing dependencies in current directory...
-    npm install user-agents axios colors p-limit https-proxy-agent socks-proxy-agent crypto-js canvas gl
+    CALL npm install user-agents axios colors p-limit https-proxy-agent socks-proxy-agent crypto-js canvas gl
 )
 echo.
 echo Dependencies installation completed!
-pause
-goto MENU
+echo.
 
-:CONFIG
+
 cls
-echo Creating configuration files...
+echo Checking configuration files...
 
 if not exist configs.json (
     echo {> configs.json
@@ -82,12 +60,9 @@ if not exist proxies.txt (
 
 echo.
 echo Configuration files have been created/checked.
-echo Please edit the files with your data before running the bot.
 echo.
-pause
-goto MENU
 
-:RUN
+
 cls
 echo Starting the bot...
 if exist "..\node_modules" (
@@ -96,8 +71,6 @@ if exist "..\node_modules" (
     echo Using node_modules from current directory
 )
 node referrals_and_generate_devicehash_meomundep.js
-pause
-goto MENU
 
-:EXIT
+pause
 exit

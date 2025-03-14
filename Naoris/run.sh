@@ -50,79 +50,53 @@ check_configs() {
     fi
 }
 
-while true; do
-    clear
-    echo "============================================================"
-    echo "    Naoris BOT SETUP AND RUN SCRIPT by @MeoMunDep"
-    echo "============================================================"
-    echo
-    echo "Current directory: $(pwd)"
-    echo "Node modules directory: $MODULES_DIR/node_modules"
-    echo
-    echo "1. Install/Update Node.js Dependencies"
-    echo "2. Create/Edit Configuration Files"
-    echo "3. Run the Bot"
-    echo "4. Exit"
-    echo
-    read -p "Enter your choice (1-4): " choice
+clear
+echo "============================================================"
+echo "    Naoris BOT SETUP AND RUN SCRIPT by @MeoMunDep"
+echo "============================================================"
+echo
+echo "Current directory: $(pwd)"
+echo "Node modules directory: $MODULES_DIR/node_modules"
+echo
 
-    case $choice in
-        1)
-            clear
-            print_yellow "Installing/Updating Node.js dependencies..."
-            cd "$MODULES_DIR"
-            npm install user-agents axios colors p-limit https-proxy-agent socks-proxy-agent crypto-js ws canvas gl
-            cd - > /dev/null
-            print_green "Dependencies installation completed!"
-            read -p "Press Enter to continue..."
-            ;;
-        2)
-            clear
-            print_yellow "Setting up configuration files..."
 
-            if [ ! -f configs.json ]; then
-                create_default_configs
-                print_green "Created configs.json with default values"
-            fi
+print_yellow "Installing/Updating Node.js dependencies..."
+cd "$MODULES_DIR"
+npm install user-agents axios colors p-limit https-proxy-agent socks-proxy-agent crypto-js ws canvas gl
+cd - > /dev/null
+print_green "Dependencies installation completed!"
+echo
 
-            check_configs
 
-            for file in datas.txt wallets.json proxies.txt; do
-                if [ ! -f "$file" ]; then
-                    touch "$file"
-                    print_green "Created $file"
-                fi
-            done
+print_yellow "Setting up configuration files..."
 
-            print_green "\nConfiguration files have been created/checked."
-            print_yellow "Please edit the files with your data before running the bot."
-            read -p "Press Enter to continue..."
-            ;;
-        3)
-            clear
-            print_yellow "Checking configuration before starting..."
-            if ! check_configs; then
-                print_red "Error: Invalid configuration detected. Please run option 2 to fix configuration."
-                read -p "Press Enter to continue..."
-                continue
-            fi
+if [ ! -f configs.json ]; then
+    create_default_configs
+    print_green "Created configs.json with default values"
+fi
 
-            print_green "Starting the bot..."
-            if [ -d "../node_modules" ]; then
-                print_green "Using node_modules from parent directory"
-            else
-                print_green "Using node_modules from current directory"
-            fi
-            node referrals_and_generate_devicehash_meomundep.js
-            read -p "Press Enter to continue..."
-            ;;
-        4)
-            print_green "Exiting..."
-            exit 0
-            ;;
-        *)
-            print_red "Invalid option. Please try again."
-            read -p "Press Enter to continue..."
-            ;;
-    esac
+check_configs
+
+for file in datas.txt wallets.json proxies.txt; do
+    if [ ! -f "$file" ]; then
+        touch "$file"
+        print_green "Created $file"
+    fi
 done
+
+print_green "\nConfiguration files have been created/checked."
+print_yellow "Please edit the files with your data before running the bot."
+echo
+
+
+print_yellow "Checking configuration before starting..."
+check_configs
+
+print_green "Starting the bot..."
+if [ -d "../node_modules" ]; then
+    print_green "Using node_modules from parent directory"
+else
+    print_green "Using node_modules from current directory"
+fi
+
+node referrals_and_generate_devicehash_meomundep.js
